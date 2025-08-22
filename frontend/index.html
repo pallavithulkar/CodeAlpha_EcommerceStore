@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChocoDelight - Premium Chocolate Shop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header with working navigation -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Choco Logo" class="logo">
+            <h1 class="logo-text">ChocoBite</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html" class="nav-link">Our Chocolates</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="cart.html" class="cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">Indulge in Chocolate Heaven</h2>
+            <p class="hero-subtitle">Handcrafted with love, delivered to your doorstep</p>
+            <a href="products.html" class="btn btn-primary pulse">Shop Now</a>
+        </div>
+        <div class="hero-image">
+            <img src="images/logo.png" alt="Premium Chocolates" class="float">
+        </div>
+    </section>
+
+    <!-- Features Section with sequential animations -->
+    <section class="features">
+        <div class="feature-card slide-up delay-1">
+            <i class="fas fa-gem"></i>
+            <h3>Premium Quality</h3>
+            <p>Only the finest cocoa beans for our chocolates</p>
+        </div>
+        <div class="feature-card slide-up delay-2">
+            <i class="fas fa-shipping-fast"></i>
+            <h3>Fast Delivery</h3>
+            <p>Get your chocolates within 2-3 business days</p>
+        </div>
+        <div class="feature-card slide-up delay-3">
+            <i class="fas fa-heart"></i>
+            <h3>Handmade</h3>
+            <p>Each piece crafted with care by our chocolatiers</p>
+        </div>
+    </section>
+
+    <!-- Popular Products Section -->
+    <section class="popular-products">
+        <h2 class="section-title">Our Bestsellers</h2>
+        <div class="product-grid">
+            <!-- Products will be loaded via JavaScript -->
+            <div class="product-card">
+                <a href="product-detail.html?id=1">
+                    <img src="images/dark-truffles.jpg" alt="Dark Chocolate Truffles" class="product-image">
+                </a>
+                <div class="product-info">
+                    <h3 class="product-title"><a href="product-detail.html?id=1">Dark Chocolate Truffles</a></h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="product-price">₹299</div>
+                    <button class="btn btn-primary add-to-cart" data-id="1">Add to Cart</button>
+                </div>
+            </div>
+            <!-- More product cards can be added here -->
+        </div>
+    </section>
+
+    <!-- AI Recommendation Section -->
+    <section class="ai-recommendation">
+        <h2 class="section-title">AI Chocolate Match</h2>
+        <div class="ai-container">
+            <p>Tell us your mood and we'll recommend the perfect chocolate!</p>
+            <div class="ai-input">
+                <input type="text" id="mood-input" placeholder="I'm feeling...">
+                <button id="ai-recommend-btn" class="btn btn-secondary">Recommend</button>
+            </div>
+            <div id="ai-result" class="ai-result hidden">
+                <!-- AI recommendation will appear here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with working links -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ChocoDelight</h3>
+                <p>Making the world sweeter, one chocolate at a time.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" class="footer-link">Home</a></li>
+                    <li><a href="products.html" class="footer-link">Products</a></li>
+                    <li><a href="about.html" class="footer-link">About Us</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@chocodelight.com</p>
+                <p>Phone: +91 9876543210</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 ChocoDelight. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-link, .footer-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('href');
+                window.location.href = page;
+            });
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                const productId = this.getAttribute('data-id');
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                const existingItem = cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({ id: productId, quantity: 1 });
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert('Product added to cart!');
+
+                // Update cart count
+                const cartCount = document.querySelector('.cart-count');
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - ChocoDelight</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="ChocoDelight Logo" class="logo">
+            <h1 class="logo-text">ChocoDelight</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Our Chocolates</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="cart.html" class="cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="cart-section">
+        <h1>Your Shopping Cart</h1>
+        <div class="cart-container">
+            <div class="cart-items">
+                <div class="cart-empty" id="cart-empty">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Your cart is empty</p>
+                    <a href="products.html" class="btn btn-primary">Browse Products</a>
+                </div>
+                <div class="cart-items-list" id="cart-items-list">
+                    <!-- Cart items will be loaded via JavaScript -->
+                </div>
+            </div>
+            <div class="cart-summary slide-up">
+                <h3>Order Summary</h3>
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="shipping">$5.99</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total">$5.99</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary checkout-btn">Proceed to Checkout</button>
+                <p class="continue-shopping">
+                    <a href="products.html">Continue Shopping</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <!-- Same as index.html -->
+    </footer>
+
+    <script src="js/cart.js"></script>
+</body>
+
+</html>
